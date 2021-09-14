@@ -8,7 +8,7 @@
 
 
 path = "/opt/packagesICS/install-packages/"
-tools::write_PACKAGES(path, type = "source")
+#tools::write_PACKAGES(path, type = "source")
 #path = "../packages/"
 pckgs <- list.files(path,full.names = F,pattern = "tar.gz")
 install.packages(pckgs,repos = paste0("file:/",path, pckgs))
