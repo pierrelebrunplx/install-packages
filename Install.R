@@ -7,11 +7,13 @@
 # R --no-save -e "source('/opt/packagesICS/install-packages/Install.R')"
 
 
+
 path = "/opt/packagesICS/install-packages/"
-#tools::write_PACKAGES(path, type = "source")
+#tools::write_PACKAGES("../packages/", type = "source")
 #path = "../packages/"
 pckgs <- list.files(path,full.names = F,pattern = "tar.gz")
-install.packages(pckgs,repos = paste0("file:/",path, pckgs))
+listpckgs = paste0(path, pckgs)
+install.packages(listpckgs,repos = NULL)
 
 #these ones do not want to install for unknown reason...
 install.packages("BiocManager")
@@ -24,11 +26,14 @@ BiocManager::install("flowDensity")
 
 #need to to it several time to secure depedencies
 #(a package won't install in some case if a dependency is not present)
-namedpckgs <- list.files(path,full.names = F)
+pckgs <- list.files(path,full.names = F)
 namedpckgs <- unlist(lapply(strsplit(namedpckgs,"_"),"[[",1))
 
-new.packages <- namedpckgs[!(namedpckgs %in% installed.packages()[,"Package"])]
+new.packages <- pckgs[!(namedpckgs %in% installed.packages()[,"Package"])]
+new.packages = paste0(path, new.packages)
 while(length(new.packages)) {
-  install.packages(new.packages,repos = paste0("file:/",path, pckgs))
+  install.packages(new.packages,repos = NULL)
   new.packages <- pckgs[!(namedpckgs %in% installed.packages()[,"Package"])]
+  new.packages = paste0(path, new.packages)
 }
+
