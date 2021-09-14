@@ -18,11 +18,10 @@ install.packages(listpckgs,repos = NULL)
 #these ones do not want to install for unknown reason...
 install.packages("BiocManager")
 BiocManager::install(version = "3.12",ask = FALSE)
-BiocManager::install("openCyto")
-BiocManager::install("cytolib")
-#For rgeos : #need to install libraries upfront on terminal using 'sudo apt install libgeos-dev'
-install.packages("rgeos")
-BiocManager::install("flowDensity")
+BiocManager::install("openCyto",ask = FALSE)
+BiocManager::install("cytolib",ask = FALSE)
+
+BiocManager::install("flowDensity",ask = FALSE)
 
 #need to to it several time to secure depedencies
 #(a package won't install in some case if a dependency is not present)
