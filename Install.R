@@ -25,7 +25,7 @@ BiocManager::install("flowDensity",ask = FALSE)
 
 #need to to it several time to secure depedencies
 #(a package won't install in some case if a dependency is not present)
-pckgs <- list.files(path,full.names = F)
+pckgs <- list.files(path,full.names = F,pattern = "tar.gz")
 namedpckgs <- unlist(lapply(strsplit(namedpckgs,"_"),"[[",1))
 
 new.packages <- pckgs[!(namedpckgs %in% installed.packages()[,"Package"])]
