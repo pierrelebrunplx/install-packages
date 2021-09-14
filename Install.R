@@ -32,9 +32,11 @@ namedpckgs <- unlist(lapply(strsplit(pckgs,"_"),"[[",1))
 
 new.packages <- pckgs[!(namedpckgs %in% installed.packages()[,"Package"])]
 new.packages = paste0(path, new.packages)
-while(length(new.packages)) {
+i=1
+while(length(new.packages) & i <5) { #try 5 times max
   install.packages(new.packages,repos = NULL)
   new.packages <- pckgs[!(namedpckgs %in% installed.packages()[,"Package"])]
-  new.packages = paste0(path, new.packages)
+  i = i + 1
+  if(length(new.packages)) new.packages = paste0(path, new.packages)
 }
 
