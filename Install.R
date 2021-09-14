@@ -12,6 +12,9 @@
 path = "/opt/packagesICS/install-packages/"
 #tools::write_PACKAGES("../packages/", type = "source")
 #path = "../packages/"
+
+install.packages("sf")
+
 pckgs <- list.files(path,full.names = F,pattern = "tar.gz")
 listpckgs = paste0(path, pckgs)
 install.packages(listpckgs,repos = NULL)
