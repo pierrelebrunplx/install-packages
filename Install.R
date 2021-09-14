@@ -15,7 +15,7 @@ install.packages(pckgs,repos = paste0("file:/",path, pckgs))
 #these ones do not want to install for unknown reason...
 install.packages("BiocManager")
 BiocManager::install(version = "3.12")
-BiocManager::install("opencyto")
+BiocManager::install("openCyto")
 BiocManager::install("cytolib")
 #For rgeos : #need to install libraries upfront on terminal using 'sudo apt install libgeos-dev'
 install.packages("rgeos")
