@@ -1,0 +1,5 @@
+install.packages("BiocManager")
+BiocManager::install(version = "3.12",ask = FALSE)
+BiocManager::install("openCyto",ask = FALSE,update = FALSE)
+BiocManager::install("cytolib",ask = FALSE, update = FALSE)
+BiocManager::install("flowDensity",ask = FALSE, update = FALSE)
