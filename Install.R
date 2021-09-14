@@ -1,13 +1,14 @@
 # RUN apt update && \
-# sudo apt install libgeos-dev
+# sudo apt-get --yes --force-yes install  libgeos-dev
 # RUN cd /opt && \
 # mkdir packagesICS && \
 # cd /opt/packagesICS && \
-# R --no-save e "system('git clone https://github.com/pierrelebrunplx/install-packages.git')" && \
-# R --no-save e "source('/opt/packagesICS/Install.R')"
+# R --no-save -e "system('git clone https://github.com/pierrelebrunplx/install-packages.git')" && \
+# R --no-save -e "source('/opt/packagesICS/install-packages/Install.R')"
 
 
-path = "/opt/packagesICS/"
+path = "/opt/packagesICS/install-packages/"
+tools::write_PACKAGES(path, type = "source")
 #path = "../packages/"
 pckgs <- list.files(path,full.names = F,pattern = "tar.gz")
 install.packages(pckgs,repos = paste0("file:/",path, pckgs))
